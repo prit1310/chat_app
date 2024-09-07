@@ -25,13 +25,7 @@ const allowedOrigins = process.env.ORIGIN.split(',');
 
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
+    origin: process.env.ORIGIN.split(','),
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true,
   })
